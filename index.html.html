@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Food Future — From Waste to Food</title>
+<style>
+  :root {
+    --green: #2E7D32;
+    --brown: #6B4423;
+    --light: #EAF3E8;
+    --rust: #B5651D;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: var(--light);
+    color: #222;
+    line-height: 1.6;
+  }
+  header {
+    text-align: center;
+    padding: 40px 20px 20px;
+  }
+  header img { width: 110px; }
+  header h1 { color: var(--green); margin: 10px 0 0; font-size: 2em; }
+  header h2 { color: var(--brown); font-weight: normal; font-size: 1.1em; margin: 4px 0; }
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--green);
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9em;
+  }
+  nav a:hover { background: var(--light); }
+  section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  section h2 { color: var(--green); font-size: 1.6em; }
+  .stat-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  .stat-card .num { font-size: 2em; font-weight: bold; color: var(--rust); }
+  .stat-card .label { font-size: 0.85em; color: var(--brown); text-transform: uppercase; letter-spacing: 1px; }
+  .treatments {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .treatments div {
+    flex: 1;
+    min-width: 140px;
+    background: white;
+    border-radius: 12px;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  .treatments h3 { margin: 0 0 6px; color: var(--green); }
+  .cycle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+    font-size: 1.3em;
+    text-align: center;
+  }
+  .cycle span.node {
+    background: white;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    font-size: 0.4em;
+    font-weight: bold;
+    color: var(--brown);
+  }
+  .cycle span.arrow { color: var(--green); font-size: 0.7em; }
+  .calc-box {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  .calc-box label { font-weight: bold; color: var(--brown); }
+  .calc-box input {
+    padding: 10px;
+    font-size: 1em;
+    width: 140px;
+    margin: 10px 10px 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  .calc-box button {
+    padding: 10px 20px;
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  .calc-box button:hover { background: #1B5E20; }
+  #calculatorResult {
+    margin-top: 14px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--rust);
+  }
+  .action-list {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  .limitations {
+    background: #FFF7E6;
+    border-left: 4px solid var(--rust);
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 0.95em;
+  }
+  footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 0.85em;
+    color: var(--brown);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="food_future_logo.png" alt="Project Food Future logo">
+  <h1>Project Food Future</h1>
+  <h2>From Waste to Food</h2>
+  <p style="font-style: italic; color:#444;">"Can yesterday's waste help grow tomorrow's food?"</p>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#problem">The Problem</a>
+  <a href="#experiment">Experiment</a>
+  <a href="#data">Data</a>
+  <a href="#cycle">Food Cycle</a>
+  <a href="#calculator">Calculator</a>
+  <a href="#action">Take Action</a>
+</nav>
+
+<section id="home">
+  <h2>Our Experiment, at a Glance</h2>
+  <div class="stat-row">
+    <div class="stat-card"><div class="num">12</div><div class="label">Pots</div></div>
+    <div class="stat-card"><div class="num">3</div><div class="label">Treatments</div></div>
+    <div class="stat-card"><div class="num">36</div><div class="label">Seeds Planted</div></div>
+    <div class="stat-card"><div class="num">21</div><div class="label">Days Monitored</div></div>
+  </div>
+</section>
+
+<section id="problem">
+  <h2>The Problem</h2>
+  <p>Food waste is not simply rubbish. When food is wasted, the land, water, energy and labour used to produce it are wasted too. A large share of the food available to consumers is lost or wasted at the retail, food-service, and household stages.</p>
+  <p>We wanted to ask a different question than "how do we grow more food?" — we asked: <strong>"how do we waste less of the food we already have?"</strong></p>
+</section>
+
+<section id="experiment">
+  <h2>Our Experiment</h2>
+  <p>We are testing whether food-waste compost affects early plant growth, using a controlled pot experiment with three treatments and four replicates each.</p>
+  <div class="treatments">
+    <div><h3>Group A</h3>0% compost<br>(control)</div>
+    <div><h3>Group B</h3>10% compost</div>
+    <div><h3>Group C</h3>20% compost</div>
+  </div>
+  <p style="margin-top:20px;">Independent variable: percentage of food-waste compost. Dependent variables: germination, height, and leaf count. We kept seed type, pot size, watering, and location as consistent as possible across all 12 pots.</p>
+</section>
+
+<section id="data">
+  <h2>Our Data</h2>
+  <p>Measurements are added throughout the 21-day experiment. Final results below.</p>
+  <div class="stat-row">
+    <div class="stat-card"><div class="num" id="height0">—</div><div class="label">0% avg height (cm)</div></div>
+    <div class="stat-card"><div class="num" id="height10">—</div><div class="label">10% avg height (cm)</div></div>
+    <div class="stat-card"><div class="num" id="height20">—</div><div class="label">20% avg height (cm)</div></div>
+  </div>
+  <p style="margin-top:16px; font-size:0.9em; color:#555;">(Fill in the three numbers below in the script once your Day 21 averages are ready — see the EDIT ME comment in the code.)</p>
+  <div class="limitations">
+    <strong>Limitations:</strong> This is a small-scale student experiment with a limited number of plants and a short observation period. We did not control temperature, humidity, and sunlight with laboratory precision, so findings should not be generalised beyond our own trial.
+  </div>
+</section>
+
+<section id="cycle">
+  <h2>The Food Cycle</h2>
+  <div class="cycle">
+    <span class="node">🍽<br>Food</span>
+    <span class="arrow">→</span>
+    <span class="node">🗑<br>Waste</span>
+    <span class="arrow">→</span>
+    <span class="node">♻<br>Compost</span>
+    <span class="arrow">→</span>
+    <span class="node">🌱<br>Plant</span>
+    <span class="arrow">→</span>
+    <span class="node">🍽<br>Food</span>
+  </div>
+</section>
+
+<section id="calculator">
+  <h2>Food Waste Calculator</h2>
+  <p>How much food waste might your household produce in a year?</p>
+  <div class="calc-box">
+    <label for="weeklyWaste">Food waste per week (kg):</label><br>
+    <input type="number" id="weeklyWaste" min="0" step="0.1" placeholder="e.g. 2.5">
+    <button onclick="calculateWaste()">Calculate</button>
+    <p id="calculatorResult"></p>
+  </div>
+</section>
+
+<section id="action">
+  <h2>Take Action</h2>
+  <div class="action-list">
+    <strong>5 things you can do this week:</strong>
+    <ol>
+      <li>Buy only what you need.</li>
+      <li>Store food correctly so it lasts longer.</li>
+      <li>Use leftovers creatively instead of tossing them.</li>
+      <li>Separate suitable organic waste for composting.</li>
+      <li>Compost where possible — even a small bin works.</li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  Project Food Future &middot; World Food Day 2026 &middot; "Innovate today. Nourish tomorrow." &middot; Built by Palesa
+</footer>
+
+<script>
+function calculateWaste() {
+  const weeklyWaste = Number(document.getElementById("weeklyWaste").value);
+  const resultEl = document.getElementById("calculatorResult");
+  if (isNaN(weeklyWaste) || weeklyWaste < 0) {
+    resultEl.textContent = "Please enter a valid amount.";
+    return;
+  }
+  const annualWaste = weeklyWaste * 52;
+  resultEl.textContent = "Estimated annual food waste: " + annualWaste.toFixed(1) + " kg";
+}
+
+// EDIT ME: once you have your Day 21 averages from the Summary sheet, put them here
+const finalHeights = {
+  "0%": null,   // e.g. 5.7
+  "10%": null,  // e.g. 7.4
+  "20%": null   // e.g. 8.1
+};
+function paintResults() {
+  document.getElementById("height0").textContent = finalHeights["0%"] ?? "—";
+  document.getElementById("height10").textContent = finalHeights["10%"] ?? "—";
+  document.getElementById("height20").textContent = finalHeights["20%"] ?? "—";
+}
+paintResults();
+</script>
+
+</body>
+</html>
